@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Songs of Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Intro Screen -->
+  <div id="intro-screen">
+    <div class="intro-content">
+      <h1>For You, With All My Heart ❤️</h1>
+      <p>Click below to start our musical journey together.</p>
+      <button id="start-btn">Start</button>
+    </div>
+  </div>
+
+  <header>
+    <h1>Songs of Us</h1>
+    <p>10 songs, 10 stories, one love story – ours.</p>
+  </header>
+
+  <section class="playlist">
+    <div class="song-card">
+      <h2>🎈 The Beginning 💖</h2>
+      <h3>Jeene Laga Hoon – Atif Aslam 🌸</h3>
+      <p><em>“The moment I knew life felt different with you.” ✨</em></p>
+      <p>This song will always be special — just like the first day I realized I felt something. 💫</p>
+      <button onclick="playSong('songs/song1.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>💬 Our Conversations 🌙</h2>
+      <h3>Talking to the Moon – Bruno Mars 🌌</h3>
+      <p><em>“Nights when I missed your voice the most.” 💤</em></p>
+      <p>I used to whisper my heart out to the sky… hoping it reaches you. 🌠</p>
+      <button onclick="playSong('songs/song2.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>🌌 Stargazing Moments ✨</h2>
+      <h3>Raatan Lambiyan – Jubin Nautiyal 🌟</h3>
+      <p><em>“Endless calls and dreamy eyes.” 🌙</em></p>
+      <p>Under every star, there’s a memory of you. 💭</p>
+      <button onclick="playSong('songs/song3.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>🌹 When I Fell for You 💞</h2>
+      <h3>Until I Found You – Stephen Sanchez 💘</h3>
+      <p><em>“That moment when it wasn’t just liking anymore — it was love.” 💖</em></p>
+      <p>I didn’t know what I was missing, until it was you. 🫶</p>
+      <button onclick="playSong('songs/song4.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>🫂 Safe With You 🏡</h2>
+      <h3>Perfect – Ed Sheeran 🥰</h3>
+      <p><em>“In your presence, I feel complete.” 🧸</em></p>
+      <p>You’re my calm, my comfort, my everything. 🫶</p>
+      <button onclick="playSong('songs/song5.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>🎢 Our Ups & Downs 💔</h2>
+      <h3>Let Her Go – Passenger 😔</h3>
+      <p><em>“Even in silence, your absence echoes.” 🌧️</em></p>
+      <p>Because loving you made even the pain poetic. 🎭</p>
+      <button onclick="playSong('songs/song6.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>🌤️ Hopeful Days 🌈</h2>
+      <h3>Love Me Like You Do – Ellie Goulding ✨</h3>
+      <p><em>“The intensity, the fire, the magic.” 🔥</em></p>
+      <p>Some days you made me feel like I was glowing. 🌟</p>
+      <button onclick="playSong('songs/song7.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>📖 Our Story 🖼️</h2>
+      <h3>Photograph – Ed Sheeran 📷</h3>
+      <p><em>“Memories captured in time, forever cherished.” 🕰️</em></p>
+      <p>Every smile in those pictures tells a story of us. 🧡</p>
+      <button onclick="playSong('songs/song8.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>💝 My Promise 🛡️</h2>
+      <h3>Stand By Me – Ben E. King 👫</h3>
+      <p><em>“No matter what, I’m here.” 🌤️</em></p>
+      <p>Storm or sunshine — you’ll never stand alone. 🌧️☀️</p>
+      <button onclick="playSong('songs/song9.mp3')">▶️ Play</button>
+    </div>
+    <div class="song-card">
+      <h2>🎇 Forever Us 🔐</h2>
+      <h3>Can’t Help Falling in Love – Kina Grannis 💍</h3>
+      <p><em>“A love that was meant to be.” 🕊️</em></p>
+      <p>Even if I tried not to... I’d still fall for you. 💓</p>
+      <button onclick="playSong('songs/song10.mp3')">▶️ Play</button>
+    </div>
+  </section>
+
+  <div class="audio-player">
+    <audio id="audio" controls>
+      <source src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    // Play selected song in audio player
+    function playSong(file) {
+      const audio = document.getElementById('audio');
+      audio.src = file;
+      audio.play();
+    }
+
+    // Intro screen fade-out
+    document.getElementById('start-btn').addEventListener('click', () => {
+      const intro = document.getElementById('intro-screen');
+      intro.classList.add('fade-out');
+      setTimeout(() => {
+        intro.style.display = 'none';
+      }, 1000);
+    });
+
+    // Floating Hearts Generator
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      heart.style.opacity = Math.random();
+      const size = 10 + Math.random() * 15;
+      heart.style.width = size + 'px';
+      heart.style.height = size + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>

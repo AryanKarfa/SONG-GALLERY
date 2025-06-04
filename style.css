@@ -1,0 +1,222 @@
+/* style.css */
+
+/* Reset and fonts */
+body, html {
+  margin: 0; padding: 0; height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: #1a1a2e;
+  color: #f0e6f6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Floating Hearts Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 10%, #ff007f33 70%);
+  z-index: 0;
+}
+.heart {
+  position: fixed;
+  bottom: -50px;
+  width: 15px;
+  height: 15px;
+  background: #ff007f;
+  clip-path: polygon(50% 0%, 0% 40%, 50% 100%, 100% 40%);
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Intro Screen */
+#intro-screen {
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: #330029;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #ffb3d9;
+  text-align: center;
+  transition: opacity 1s ease;
+}
+#intro-screen.fade-out {
+  opacity: 0;
+}
+#intro-screen h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+#intro-screen p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+#start-btn {
+  background: #ff4d94;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff4d94;
+  transition: background 0.3s ease;
+}
+#start-btn:hover {
+  background: #e60073;
+}
+
+/* Header */
+header {
+  padding: 40px 20px 20px;
+  text-align: center;
+  z-index: 10;
+  position: relative;
+}
+header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #ff66b3;
+  margin: 0;
+}
+header p {
+  font-size: 1.2rem;
+  color: #ffa6cc;
+  margin-top: 8px;
+}
+
+/* Playlist container */
+.playlist {
+  max-width: 720px;
+  margin: 40px auto 120px; /* space bottom for audio player */
+  padding: 0 20px;
+  position: relative;
+  z-index: 5;
+}
+
+/* Song Card */
+.song-card {
+  background: #2d1439;
+  border-radius: 15px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(255, 0, 130, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+  animation-name: fadeSlideUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+.song-card:nth-child(1) { animation-delay: 0.1s; }
+.song-card:nth-child(2) { animation-delay: 0.3s; }
+.song-card:nth-child(3) { animation-delay: 0.5s; }
+.song-card:nth-child(4) { animation-delay: 0.7s; }
+.song-card:nth-child(5) { animation-delay: 0.9s; }
+.song-card:nth-child(6) { animation-delay: 1.1s; }
+.song-card:nth-child(7) { animation-delay: 1.3s; }
+.song-card:nth-child(8) { animation-delay: 1.5s; }
+.song-card:nth-child(9) { animation-delay: 1.7s; }
+.song-card:nth-child(10) { animation-delay: 1.9s; }
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.song-card h2 {
+  margin: 0 0 6px;
+  font-size: 1.8rem;
+  color: #ff66b3;
+}
+.song-card h3 {
+  margin: 0 0 10px;
+  font-style: italic;
+  color: #ffa6cc;
+}
+.song-card p {
+  margin: 0 0 15px;
+  color: #f2d6e6;
+  line-height: 1.4;
+}
+.song-card button {
+  background: #ff4d94;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff4d94;
+  transition: background 0.3s ease;
+}
+.song-card button:hover {
+  background: #e60073;
+}
+
+/* Sticky Audio Player */
+.audio-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #330029;
+  box-shadow: 0 -3px 15px rgba(255, 0, 130, 0.7);
+  padding: 10px 20px;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+}
+.audio-player audio {
+  width: 100%;
+  max-width: 720px;
+  outline: none;
+  filter: drop-shadow(0 0 4px #ff4d94);
+  border-radius: 15px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff4d94;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  .song-card {
+    padding: 20px;
+  }
+  .song-card h2 {
+    font-size: 1.5rem;
+  }
+  .song-card h3 {
+    font-size: 1rem;
+  }
+}
